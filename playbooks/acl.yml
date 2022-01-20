@@ -2,20 +2,24 @@
 - hosts: leafs_DC1, leafs_DC2
   gather_facts: no
   tasks:
+  
   - name: Register variables
     tags: [build,test]
     include_vars:
       file: "{{lookup('env','PWD')}}/vars/vars.yml"
       name: acl
+  
   - name: Test variables
     tags: [test]
     debug:
       msg: "{{ acl }}"
+  
   - name: Create ACL
     tags: [build]
     template:
       src: "{{lookup('env','PWD')}}/templates/acl.j2"
       dest: "{{lookup('env','PWD')}}/configs/{{inventory_hostname}}_acl.cfg"
+  
   - name: Upload config
     tags: [provision]
     eos_config:
