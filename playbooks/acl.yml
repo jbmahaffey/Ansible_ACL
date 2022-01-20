@@ -1,5 +1,5 @@
 ---
-- hosts: leafs_DC1, leafs_DC2
+- hosts: leafs_DC1
   gather_facts: no
   tasks:
 
