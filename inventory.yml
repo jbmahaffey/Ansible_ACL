@@ -1,0 +1,20 @@
+all:
+  children:
+    DC1:
+      children:
+        spines_DC1:
+          hosts:
+            spine1-DC1:
+              ansible_host: 172.17.101.200
+        leafs_DC1:
+          hosts:
+            leaf1-DC1:
+              ansible_host: 172.17.101.51
+  vars:
+    ansible_connection: network_cli
+    ansible_network_os: eos
+    ansible_become: yes
+    ansible_become_method: enable
+    ansible_python_interpreter: /usr/bin/python3
+    ansible_user: #username
+    ansible_password: #password
