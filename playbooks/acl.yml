@@ -4,13 +4,12 @@
   tasks:
 
   - name: Register variables
-    tags: [build,test,provision]
+    tags: [build,provision]
     include_vars:
       file: "{{lookup('env','PWD')}}/vars/vars.yml"
       name: acl
 
   - name: Test variables
-    tags: [test]
     debug:
       msg: "{{ acl }}"
 
