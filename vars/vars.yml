@@ -1,12 +1,19 @@
 acl:
   deny-http:
     rules:
+      # Removing a rule requires running the no command for that rule as below
       - no deny tcp host 192.168.100.20 any eq 80
+      ##############################################
       - 20 deny tcp host 192.168.101.20 any eq 80
       - 30 deny tcp host 192.168.101.30 any eq 80
       - 40 permit ip any any
   deny-https:
     rules:
-      - 10 deny tcp host 192.168.101.20 any eq 443
+      # Modifying a rule is similar to removing we have to remove that sequence and replace it with a new one as below
+      - no deny tcp host 192.168.101.20 any eq 443
+      - 10 deny tcp host 192.168.101.21 any eq 443
+      #############################################
+      - 20 permit ip any any
+
 
 
