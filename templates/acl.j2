@@ -1,4 +1,4 @@
-ip access-list deny-http
-    {% for acls in acl %}
+ip access-list {{ acl['acl']['name'] }}
+    {% for acls in acl['acl']['rules'] %}
     {{acls}}
     {% endfor %}
