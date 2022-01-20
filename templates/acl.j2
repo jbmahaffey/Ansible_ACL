@@ -1,4 +1,6 @@
-ip access-list {{ acl['acl']['name'] }}
-    {% for acls in acl['acl']['rules'] %}
-    {{acls}}
+{% for access in acl['acl'] %}
+ip access-list {{ access }}
+    {% for acl in acl['acl'][access]['rules'] %}
+    {{ acl }}
     {% endfor %}
+{% endfor %}

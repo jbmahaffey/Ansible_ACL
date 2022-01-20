@@ -1,6 +1,12 @@
 acl:
-  name: deny-http
-  rules:
-    - 10 deny tcp host 192.168.100.20 any eq 80
-    - 20 deny tcp host 192.168.101.20 any eq 80
-    - 30 permit ip any any
+  deny-http:
+    rules:
+      - no deny tcp host 192.168.100.20 any eq 80
+      - 20 deny tcp host 192.168.101.20 any eq 80
+      - 30 deny tcp host 192.168.101.30 any eq 80
+      - 40 permit ip any any
+  deny-https:
+    rules:
+      - 10 deny tcp host 192.168.101.20 any eq 443
+
+
